@@ -113,23 +113,15 @@ void InputHotPlate( double hotPlate[][ARRAY_SIZE] ) // Input from TXT file
 void UpdateHotPlate( double hotPlate[][ARRAY_SIZE], double tempHotPlate[][ARRAY_SIZE] ) // Updates with the element averages
 {
     for ( int col = 1; col < ARRAY_SIZE-1; col++ )
-    {
         for (int row = 1; row < ARRAY_SIZE - 1 ; row++)
-        {
             hotPlate[col][row] = (tempHotPlate[col-1][row] + tempHotPlate[col+1][row] + tempHotPlate[col][row-1] + tempHotPlate[col][row+1])/4;
-        }
-    }
 }
 
 void UpdateTempHotPlate( double hotPlate[][ARRAY_SIZE], double tempHotPlate[][ARRAY_SIZE] ) // Assigns tempHotPlate to hotPlate
 {
     for ( int col = 1; col < ARRAY_SIZE-1; col++ )
-    {
         for (int row = 1; row < ARRAY_SIZE - 1 ; row++)
-        {
             tempHotPlate[col][row] = hotPlate[col][row];
-        }
-    }
 }
 
 void EqualizePlate( double hotPlate[][ARRAY_SIZE], double tempHotPlate[][ARRAY_SIZE]) // Run until there has not been a change of less than 0.1 for each element
@@ -165,14 +157,7 @@ void PrintHotPlate( double hotPlate[][ARRAY_SIZE]) // Outputs the hotPlate 2D ar
         for ( int row = 0; row < ARRAY_SIZE; row++ )
         {
             cout << fixed << setprecision(3) << right << setw(9) << hotPlate[col][row];
-            if (row != ARRAY_SIZE - 1)
-            {
-                cout << ",";
-            }
-            else
-            {
-                cout << endl;
-            }
+            cout << ((row != ARRAY_SIZE - 1) ? ',' : '\n');
         }
     }
 }
